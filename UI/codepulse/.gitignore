@@ -1,0 +1,16 @@
+# Ignore Visual Studio temporary files, build results, and
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Ignore build results
+bin/
+obj/
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore any other temporary or sensitive files
+.DS_Store
+.env
