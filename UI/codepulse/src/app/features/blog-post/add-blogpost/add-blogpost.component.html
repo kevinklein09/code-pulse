@@ -32,7 +32,7 @@
 
       <div class="mt-3">
         <label for="content" class="form-label">Content</label>
-        
+
         <div class="d-flex flex-row">
           <div class="col-6 p-2">
             <textarea 
@@ -53,6 +53,13 @@
 
       <div class="mt-3">
         <label for="featuredImageUrl" class="form-label">Featured Image Url</label>
+
+        <ng-container *ngIf="model.featuredImageUrl !== ''">
+          <div>
+            <img [src]="model.featuredImageUrl" height="100" class="my-2">
+          </div>
+        </ng-container>
+
         <input type="text"
         id="featuredImageUrl"
         name="featuredImageUrl"
