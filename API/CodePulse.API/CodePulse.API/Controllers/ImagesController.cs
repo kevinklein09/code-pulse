@@ -55,7 +55,7 @@ namespace CodePulse.API.Controllers
         {
             var allowedExtensions = new string[] { ".jpg", ".jpeg", ".png" };
 
-            if (allowedExtensions.Contains(Path.GetExtension(file.FileName).ToLower()))
+            if (!allowedExtensions.Contains(Path.GetExtension(file.FileName).ToLower()))
             {
                 ModelState.AddModelError("file", "Unsupported file format");
             }
