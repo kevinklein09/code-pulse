@@ -6,7 +6,7 @@ namespace CodePulse.API.Data
 {
     public class AuthDbContext : IdentityDbContext
     {
-        public AuthDbContext(DbContextOptions options) : base(options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
         }
 
@@ -26,7 +26,7 @@ namespace CodePulse.API.Data
                     Name = "Reader",
                     NormalizedName = "Reader".ToUpper(),
                     ConcurrencyStamp = readerRoleId
-                }
+                },
                 new IdentityRole()
                 {
                      Id = writerRoleId,
@@ -34,7 +34,7 @@ namespace CodePulse.API.Data
                      NormalizedName = "Writer".ToUpper(),
                      ConcurrencyStamp = writerRoleId
                 }
-            };
+            }; 
 
 
             // Seed the roles
