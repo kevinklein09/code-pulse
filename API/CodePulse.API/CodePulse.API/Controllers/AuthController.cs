@@ -41,7 +41,7 @@ namespace CodePulse.API.Controllers
                         Token = "TOKEN"
                     };
 
-                    return Ok();
+                    return Ok(response);
                 }
             }
             ModelState.AddModelError("", "Email or Password is Incorrect");
