@@ -39,7 +39,7 @@ namespace CodePulse.API.Controllers
 
                     // Create a Token and Response
                     var jwtToken = tokenRepository.CreateJwtToken(identityUser, roles.ToList());
-
+                    
                     var response = new LoginResponseDto()
                     {
                         Email = request.Email,
