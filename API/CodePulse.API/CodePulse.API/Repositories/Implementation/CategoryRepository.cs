@@ -36,23 +36,40 @@ namespace CodePulse.API.Repositories.Implementation
 
         }
 
-        public async Task<IEnumerable<Category>> GetAllAsync(string? query = null)
+        public async Task<IEnumerable<Category>> GetAllAsync(string? query = null,
+            string? sortBy = null,
+            string? sortDirection = null)
         {
             // Query
             var categories = dbContext.Categories.AsQueryable();
 
             // Filtering
-            if (string.IsNullOrWhiteSpace(query) == false) 
+            if (string.IsNullOrWhiteSpace(query) == false)
             {
                 categories = categories.Where(x => x.Name.Contains(query));
             }
 
             // Sorting
+            if (string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (string.Equals(sortBy, "Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    var isAsc = string.Equals(sortDirection, "asc", StringComparison.OrdinalIgnoreCase)
+                        ? true : false;
 
+                    categories = isAsc ? categories.OrderBy(x => x.Name): categories.OrderByDescending(x => x.Name);
+                }
+
+                if (string.Equals(sortBy, "URL", StringComparison.OrdinalIgnoreCase))
+                {
+                    var isAsc = string.Equals(sortDirection, "asc", StringComparison.OrdinalIgnoreCase)
+                        ? true : false;
+
+                    categories = isAsc ? categories.OrderBy(x => x.UrlHandle) : categories.OrderByDescending(x => x.UrlHandle);
+                }
+            }
 
             // Pagination
-
-
 
             return await categories.ToListAsync();
 
